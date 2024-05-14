@@ -15,24 +15,36 @@ step "Installing development tools..."
 brew install --cask iterm2
 brew install --cask raycast
 brew install --cask quicklook-json
+brew install --cask quicklook-csv
 brew install --cask aws-vault
 brew install --cask visual-studio-code
 brew install --cask intellij-idea
 brew install --cask intellij-idea-ce
+brew install zsh
 brew install docker
 brew install git
+brew install awscli
+success "Done"
+
+step "Setting up oh-my-zsh..."
+sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+source ~/.zshrc
 success "Done"
 
 step "Installing util tools..."
 brew install --cask obs
 brew install --cask licecap
 brew install --cask rectangle
+brew install --cask appcleaner
+brew install --cask suspicious-package
+brew install tree
 success "Done"
 
 step "Installing communication tools..."
 brew install --cask discord
 brew install --cask zoom
-brew install --cask linear-linear
 success "Done"
 
 step "Installing security tools..."
