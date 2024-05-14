@@ -79,6 +79,10 @@ defaults write com.apple.dock autohide-delay -int 0
 defaults write com.apple.dock autohide-time-modifier -float 0.4
 killall Dock
 
+# reduce motion
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
+killall Dock
+
 # touch id for sudo
 sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local 
 
