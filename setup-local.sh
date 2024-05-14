@@ -24,12 +24,24 @@ brew install zsh
 brew install docker
 brew install git
 brew install awscli
+brew install bat
 success "Done"
 
 step "Setting up oh-my-zsh..."
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
+
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+echo 'source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
+
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+echo 'source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
+
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+echo 'source $ZSH_CUSTOM/plugins/you-should-use/zsh-you-should-use.plugin.zsh' >> ~/.zshrc
+
+git clone https://github.com/fdellwing/zsh-bat.git $ZSH_CUSTOM/plugins/zsh-bat
+echo 'source $ZSH_CUSTOM/plugins/zsh-bat/zsh-bat.plugin.zsh' >> ~/.zshrc
+
 source ~/.zshrc
 success "Done"
 
