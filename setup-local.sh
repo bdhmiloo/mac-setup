@@ -25,6 +25,7 @@ brew install docker
 brew install git
 brew install awscli
 brew install bat
+brew install tree
 success "Done"
 
 step "Setting up oh-my-zsh..."
@@ -51,7 +52,6 @@ brew install --cask licecap
 brew install --cask rectangle
 brew install --cask appcleaner
 brew install --cask suspicious-package
-brew install tree
 success "Done"
 
 step "Installing communication tools..."
