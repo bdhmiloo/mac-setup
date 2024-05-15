@@ -24,3 +24,7 @@ alias nowdate="date +"%d-%m-%Y""
 # confirmation
 alias ln="ln -i"
 alias rm="rm -I –preserve-root"
+
+# dev
+alias "idea=open -a /Applications/IntelliJ\ IDEA.app/"
+alias "ideace=open -a /Applications/IntelliJ\ IDEA\ CE.app/"
