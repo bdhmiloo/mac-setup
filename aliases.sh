@@ -9,7 +9,7 @@ alias zshcfg="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias sshcfg="nano ~/.ssh/config"
 alias zshshortcut="nano ~/.oh-my-zsh/custom/shortcuts.zsh"
-alias zshalias="nano ~/.oh-my-zsh/custom/aliasis.zsh"
+alias zshalias="nano ~/.oh-my-zsh/custom/aliases.sh"
 
 # history
 alias h="history"
@@ -17,8 +17,7 @@ alias gh="history | grep"
 
 # date
 alias now="date +"%T""
-alias nowtime=now
-alias nowdate="date +"%d-%m-%Y""
+alias today="date +"%d-%m-%Y""
 
 # confirmation
 alias ln="ln -i"
