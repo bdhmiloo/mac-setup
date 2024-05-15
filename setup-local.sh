@@ -34,7 +34,10 @@ success "Done"
 step "Setting up oh-my-zsh..."
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+echo 'source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh' >> ~/.zshrc
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 echo 'source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
 
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
