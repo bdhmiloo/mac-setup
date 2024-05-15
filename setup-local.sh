@@ -92,6 +92,13 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 source ~/.zshrc
 success "Done"
 
+step "Installing jenv..."
+brew install jenv
+echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(jenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+success "Done"
+
 step "Optimizing mac settings..."
 # snappy dock
 defaults write com.apple.dock autohide-delay -int 0
