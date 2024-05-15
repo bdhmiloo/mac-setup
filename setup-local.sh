@@ -76,7 +76,7 @@ cp $BASEDIR/aliases.sh $ZSH_CUSTOM
 echo 'source $ZSH_CUSTOM/aliases.sh' >> ~/.zshrc
 success "Done"
 
-echo "Installing nvm..."
+step "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -84,7 +84,7 @@ export NVM_DIR="$HOME/.nvm"
 source ~/.zshrc
 success "Done"
 
-echo "Installing pyenv..."
+step "Installing pyenv..."
 brew install pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
@@ -92,18 +92,14 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 source ~/.zshrc
 success "Done"
 
-echo "Optimizing mac settings..."
-
+step "Optimizing mac settings..."
 # snappy dock
 defaults write com.apple.dock autohide-delay -int 0
 defaults write com.apple.dock autohide-time-modifier -float 0.4
 killall Dock
-
 # reduce motion
 defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
 killall Dock
-
 # touch id for sudo
 sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local 
-
 success "Done"
