@@ -31,7 +31,26 @@ brew install gnupg
 brew install pre-commit
 success "Done"
 
-step "Setting up oh-my-zsh..."
+step "Installing util tools..."
+brew install --cask obs
+brew install --cask licecap
+brew install --cask rectangle
+brew install --cask appcleaner
+brew install --cask suspicious-package
+success "Done"
+
+step "Installing communication tools..."
+brew install --cask discord
+brew install --cask zoom
+success "Done"
+
+step "Installing security tools..."
+brew install --cask keepassxc
+brew install --cask tailscale
+brew install --cask cryptomator
+success "Done"
+
+step "Installing plugins zsh..."
 sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
 
 git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
@@ -52,23 +71,9 @@ echo 'source $ZSH_CUSTOM/plugins/zsh-bat/zsh-bat.plugin.zsh' >> ~/.zshrc
 source ~/.zshrc
 success "Done"
 
-step "Installing util tools..."
-brew install --cask obs
-brew install --cask licecap
-brew install --cask rectangle
-brew install --cask appcleaner
-brew install --cask suspicious-package
-success "Done"
-
-step "Installing communication tools..."
-brew install --cask discord
-brew install --cask zoom
-success "Done"
-
-step "Installing security tools..."
-brew install --cask keepassxc
-brew install --cask tailscale
-brew install --cask cryptomator
+step "Customizing zsh configurations..."
+cp $BASEDIR/aliases.sh $ZSH_CUSTOM
+echo 'source $ZSH_CUSTOM/aliases.sh' >> ~/.zshrc
 success "Done"
 
 echo "Installing nvm..."
