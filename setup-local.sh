@@ -17,6 +17,7 @@ brew install --cask raycast
 brew install --cask quicklook-json
 brew install --cask quicklook-csv
 brew install --cask aws-vault
+brew install --cask session-manager-plugin
 brew install --cask visual-studio-code
 brew install --cask intellij-idea
 brew install --cask intellij-idea-ce
@@ -26,6 +27,8 @@ brew install git
 brew install awscli
 brew install bat
 brew install tree
+brew install gnupg
+brew install pre-commit
 success "Done"
 
 step "Setting up oh-my-zsh..."
