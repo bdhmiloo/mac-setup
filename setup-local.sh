@@ -119,22 +119,3 @@ echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(jenv init -)"' >> ~/.zshrc
 source ~/.zshrc
 success "Done"
-
-step "Optimizing mac settings..."
-# snappy dock
-defaults write com.apple.dock autohide-delay -int 0
-defaults write com.apple.dock autohide-time-modifier -float 0.4
-killall Dock
-# reduce motion
-defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
-killall Dock
-# touch id for sudo
-sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
-# do not open previous previewed files (e.g. PDFs) when opening a new one
-defaults write com.apple.Preview ApplePersistenceIgnoreState YES
-# show Library folder
-chflags nohidden ~/Library
-# show hidden files
-defaults write com.apple.finder AppleShowAllFiles YES
-killall Finder
-success "Done"
