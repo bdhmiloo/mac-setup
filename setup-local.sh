@@ -29,11 +29,13 @@ brew install bat
 brew install tree
 brew install gnupg
 brew install pre-commit
+brew install commitizen
 success "Done"
 
 step "Installing util tools..."
 brew install --cask obs
 brew install --cask licecap
+brew install --cask keycastr
 brew install --cask rectangle
 brew install --cask appcleaner
 brew install --cask suspicious-package
@@ -108,5 +110,12 @@ killall Dock
 defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
 killall Dock
 # touch id for sudo
-sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local 
+sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
+# do not open previous previewed files (e.g. PDFs) when opening a new one
+defaults write com.apple.Preview ApplePersistenceIgnoreState YES
+# show Library folder
+chflags nohidden ~/Library
+# show hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+killall Finder
 success "Done"
