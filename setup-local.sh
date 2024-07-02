@@ -89,6 +89,9 @@ echo 'source $ZSH_CUSTOM/plugins/you-should-use/zsh-you-should-use.plugin.zsh' >
 git clone https://github.com/fdellwing/zsh-bat.git $ZSH_CUSTOM/plugins/zsh-bat
 echo 'source $ZSH_CUSTOM/plugins/zsh-bat/zsh-bat.plugin.zsh' >> ~/.zshrc
 
+git clone https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
+echo 'source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> ~/.zshrc
+
 source ~/.zshrc
 success "Done"
 
