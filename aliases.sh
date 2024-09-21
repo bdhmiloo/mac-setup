@@ -4,6 +4,10 @@
 #################
 alias lhidden="ls -d .* --color=auto" # show hidden files
 alias c="clear"
+alias r="reset"
+alias sha1="openssl sha1"
+alias path='echo -e ${PATH//:/\\n}'
+alias current='date +%s'
 
 #################
 # config
@@ -19,7 +23,7 @@ alias sshcfg="nano ~/.ssh/config"
 # history
 #################
 alias h="history"
-alias gh="history | grep"
+alias h-grep="history | grep"
 
 #################
 # date
@@ -49,11 +53,7 @@ alias pip="pip3"
 ##################
 # docker
 ##################
-alias drm="docker rm $(docker ps -a -q)"
-alias dsp='docker system prune'
-alias dvp='docker volume prune'
-
-docker_exec_bash() {
+docker-exec-bash-fn() {
   if [ $# -ne 1 ]; then
     echo "Usage: $FUNCNAME CONTAINER_ID"
     return 1
@@ -62,9 +62,7 @@ docker_exec_bash() {
   docker exec -it $1 /bin/sh
 }
 
-alias dsh='docker_exec_bash'
-
-docker_exec_entrypoint_bash() {
+docker-run-entrypoint-bash-fn() {
   if [ $# -ne 1 ]; then
     echo "Usage: $FUNCNAME CONTAINER_ID"
     return 1
@@ -73,9 +71,16 @@ docker_exec_entrypoint_bash() {
   docker run --rm -it --entrypoint=/bin/bash $1
 }
 
-alias dshe='docker_exec_entrypoint_bash'
+docker-stop-rm-container-fn() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: $FUNCNAME CONTAINER_ID"
+    return 1
+  fi
 
-docker_compose_exec_bash() {
+	docker stop $1; docker rm $1
+}
+
+docker-compose-exec-bash-fn() {
   if [ $# -ne 1 ]; then
     echo "Usage: $FUNCNAME CONTAINER_ID"
     return 1
@@ -84,4 +89,13 @@ docker_compose_exec_bash() {
   docker-compose exec $1 /bin/sh
 }
 
-alias dcsh='docker_compose_exec_bash'
+alias dk="docker"
+alias dke='docker-exec-bash-fn'
+alias dksh='docker-run-entrypoint-bash-fn'
+alias dkrm="docker-stop-rm-container-fn"
+alias dkrm-all="docker rm $(docker ps --all -q -f status=exited)"
+alias dksp='docker system prune'
+alias dkvp='docker volume prune'
+
+alias dkc="docker-compose"
+alias dkce='docker-compose-exec-bash-fn'
