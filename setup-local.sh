@@ -49,6 +49,7 @@ brew install tree
 brew install gnupg
 brew install pre-commit
 brew install commitizen
+brew install shellcheck
 success "Done"
 
 step "Installing util tools..."
