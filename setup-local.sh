@@ -6,22 +6,33 @@ BASEDIR=$(dirname $0)
 source $BASEDIR/shared.sh
 
 step "Optimizing mac settings..."
-# snappy dock
-defaults write com.apple.dock autohide-delay -int 0
+# Snappy Dock: no delay, slightly faster animation
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0.4
-killall Dock
-# reduce motion
-defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
-killall Dock
-# touch id for sudo
-sed "s/^#auth/auth/" /etc/pam.d/sudo_local.template | sudo tee /etc/pam.d/sudo_local
-# do not open previous previewed files (e.g. PDFs) when opening a new one
-defaults write com.apple.Preview ApplePersistenceIgnoreState YES
-# show Library folder
-chflags nohidden ~/Library
-# show hidden files
-defaults write com.apple.finder AppleShowAllFiles YES
-killall Finder
+killall Dock || true
+
+# Reduce motion (prefer the official UI-backed setting)
+# This makes space switching and other animations less intense.
+defaults write com.apple.universalaccess reduceMotion -bool true
+killall Dock || true
+
+# Touch ID for sudo (Sonoma/Tahoe style, survives updates)
+if [ -f /etc/pam.d/sudo_local.template ]; then
+  step "Enabling Touch ID for sudo..."
+  sed -e 's/^#auth/auth/' /etc/pam.d/sudo_local.template \
+    | sudo tee /etc/pam.d/sudo_local >/dev/null
+fi
+
+# Do not reopen previously previewed files
+defaults write com.apple.Preview ApplePersistenceIgnoreState -bool true
+
+# Show Library folder
+chflags nohidden "${HOME}/Library"
+
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
+killall Finder || true
 success "Done"
 
 step "Install brew..."
