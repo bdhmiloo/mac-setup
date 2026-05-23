@@ -107,6 +107,8 @@ success "Done"
 step "Customizing zsh configurations..."
 cp $BASEDIR/aliases.sh $ZSH_CUSTOM
 echo 'source $ZSH_CUSTOM/aliases.sh' >> ~/.zshrc
+cp $BASEDIR/ai.sh $ZSH_CUSTOM
+echo 'source $ZSH_CUSTOM/ai.sh' >> ~/.zshrc
 success "Done"
 
 step "Installing nvm..."

@@ -19,3 +19,5 @@ Make script executable:
 Copy aliases to zsh folder without script:
 
 `cp aliases.sh $ZSH_CUSTOM`
+
+`cp ai.sh $ZSH_CUSTOM`
